@@ -1,0 +1,136 @@
+📄 Métodos Construtores em Java
+1. O que é um Construtor?
+
+Um construtor é um método especial em Java usado para inicializar objetos.
+Ele é chamado automaticamente no momento em que o objeto é criado, ou seja, quando usamos new.
+
+Características:
+
+Tem o mesmo nome da classe.
+
+Não possui tipo de retorno (nem void).
+
+Pode receber parâmetros para inicializar atributos.
+
+Pode haver mais de um construtor na mesma classe (sobrecarga de construtores).
+
+2. Sintaxe Básica
+public class Pessoa {
+    private String nome;
+    private int idade;
+
+    // Construtor padrão (sem parâmetros)
+    public Pessoa() {
+        this.nome = "Desconhecido";
+        this.idade = 0;
+    }
+
+    // Construtor com parâmetros
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    // Getters
+    public String getNome() { return nome; }
+    public int getIdade() { return idade; }
+}
+
+3. Como Usar um Construtor
+public class Main {
+    public static void main(String[] args) {
+        // Usando construtor sem parâmetros
+        Pessoa p1 = new Pessoa();
+        System.out.println("Nome: " + p1.getNome()); // Desconhecido
+        System.out.println("Idade: " + p1.getIdade()); // 0
+
+        // Usando construtor com parâmetros
+        Pessoa p2 = new Pessoa("Lucas", 20);
+        System.out.println("Nome: " + p2.getNome()); // Lucas
+        System.out.println("Idade: " + p2.getIdade()); // 20
+    }
+}
+
+4. Tipos de Construtores
+
+Construtor Padrão (Default):
+
+Criado automaticamente pelo Java se nenhum outro for definido.
+
+Não recebe parâmetros.
+
+public Pessoa() { }
+
+
+Construtor Personalizado:
+
+Criado pelo programador, geralmente com parâmetros.
+
+public Pessoa(String nome, int idade) { ... }
+
+
+Sobrecarga de Construtores:
+
+Quando a classe tem vários construtores com parâmetros diferentes.
+
+public Pessoa() { ... }
+public Pessoa(String nome) { ... }
+public Pessoa(String nome, int idade) { ... }
+
+5. Palavra-chave this
+
+Usada para diferenciar atributos da classe de parâmetros.
+
+Também pode chamar outro construtor da mesma classe.
+
+Exemplo:
+public class Carro {
+    private String modelo;
+    private int ano;
+
+    // Construtor chamando outro construtor
+    public Carro() {
+        this("Desconhecido", 0); // chama o outro construtor
+    }
+
+    public Carro(String modelo, int ano) {
+        this.modelo = modelo;
+        this.ano = ano;
+    }
+
+    public String getModelo() { return modelo; }
+    public int getAno() { return ano; }
+}
+
+6. Construtores e Herança
+
+Construtores não são herdados, mas podem ser chamados pela palavra-chave super.
+
+Exemplo:
+public class Animal {
+    private String nome;
+
+    public Animal(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() { return nome; }
+}
+
+public class Cachorro extends Animal {
+    public Cachorro(String nome) {
+        super(nome); // chama o construtor da classe pai
+    }
+}
+
+7. Resumindo
+
+Construtores inicializam objetos.
+
+Têm o mesmo nome da classe e não possuem retorno.
+
+Podem ser sobrecarregados (overloading).
+
+this → referencia a própria classe.
+
+super → chama construtores da superclasse.

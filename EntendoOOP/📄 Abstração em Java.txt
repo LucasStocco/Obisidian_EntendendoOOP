@@ -1,0 +1,149 @@
+📄 Abstração em Java
+1. O que é Abstração?
+
+A Abstração é um dos quatro pilares da Programação Orientada a Objetos (POO).
+Ela consiste em representar conceitos do mundo real em forma de classes, destacando apenas as características essenciais e ocultando os detalhes irrelevantes.
+
+Em Java, a abstração é usada para definir um modelo, sem precisar implementar todos os detalhes de imediato.
+
+2. Como aplicar Abstração em Java?
+
+Java oferece duas formas principais de implementar abstração:
+
+Classes Abstratas
+
+Definidas com a palavra-chave abstract.
+
+Podem conter métodos abstratos (sem corpo) e métodos comuns.
+
+Não podem ser instanciadas diretamente.
+
+Servem de modelo para subclasses.
+
+Interfaces
+
+Definidas com a palavra-chave interface.
+
+Definem apenas métodos sem implementação (até o Java 7).
+
+A partir do Java 8, podem ter métodos default (com implementação) e estáticos.
+
+São como um contrato: a classe que “assina” a interface deve implementar seus métodos.
+
+3. Exemplo com Classe Abstrata
+Classe Abstrata:
+// Classe abstrata Animal
+public abstract class Animal {
+    private String nome;
+
+    public Animal(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    // Método abstrato (sem corpo, precisa ser implementado nas subclasses)
+    public abstract void emitirSom();
+}
+
+Subclasses:
+// Subclasse Cachorro
+public class Cachorro extends Animal {
+    public Cachorro(String nome) {
+        super(nome);
+    }
+
+    @Override
+    public void emitirSom() {
+        System.out.println(getNome() + " late: Au Au!");
+    }
+}
+
+// Subclasse Gato
+public class Gato extends Animal {
+    public Gato(String nome) {
+        super(nome);
+    }
+
+    @Override
+    public void emitirSom() {
+        System.out.println(getNome() + " mia: Miau!");
+    }
+}
+
+Classe Principal:
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Cachorro("Rex");
+        Animal cat = new Gato("Mimi");
+
+        dog.emitirSom(); // Rex late: Au Au!
+        cat.emitirSom(); // Mimi mia: Miau!
+    }
+}
+
+
+🔎 Aqui, a classe abstrata Animal define o modelo (todos os animais devem emitirSom), mas quem decide o como são as subclasses.
+
+4. Exemplo com Interface
+Interface:
+public interface Veiculo {
+    void acelerar();
+    void frear();
+}
+
+Classes que implementam a interface:
+public class Carro implements Veiculo {
+    @Override
+    public void acelerar() {
+        System.out.println("O carro está acelerando...");
+    }
+
+    @Override
+    public void frear() {
+        System.out.println("O carro está freando...");
+    }
+}
+
+public class Moto implements Veiculo {
+    @Override
+    public void acelerar() {
+        System.out.println("A moto está acelerando...");
+    }
+
+    @Override
+    public void frear() {
+        System.out.println("A moto está freando...");
+    }
+}
+
+Classe Principal:
+public class Main {
+    public static void main(String[] args) {
+        Veiculo carro = new Carro();
+        Veiculo moto = new Moto();
+
+        carro.acelerar();
+        carro.frear();
+
+        moto.acelerar();
+        moto.frear();
+    }
+}
+
+
+🔎 Aqui, Veiculo é uma interface (um contrato). Tanto Carro quanto Moto são obrigados a implementar os métodos definidos.
+
+5. Resumindo
+
+Abstração = focar no essencial e esconder detalhes desnecessários.
+
+Usada com:
+
+Classes abstratas → modelo + herança parcial.
+
+Interfaces → contratos de comportamento.
+
+Ajuda a criar sistemas mais flexíveis, organizados e reutilizáveis.

@@ -1,0 +1,187 @@
+📄 Guia de Diagramas UML
+1. O que é UML?
+
+UML (Unified Modeling Language) é uma linguagem de modelagem visual usada para representar sistemas orientados a objetos.
+Ela não é uma linguagem de programação, mas um padrão gráfico que ajuda a entender, projetar e documentar softwares.
+
+2. Principais Tipos de Diagramas UML
+
+A UML possui vários diagramas, mas os mais comuns em POO e Java são:
+
+Diagramas Estruturais (mostram “o que o sistema é”):
+
+Diagrama de Classes
+
+Diagrama de Objetos
+
+Diagrama de Pacotes
+
+Diagramas Comportamentais (mostram “como o sistema se comporta”):
+
+Diagrama de Casos de Uso
+
+Diagrama de Sequência
+
+Diagrama de Atividades
+
+3. Como Ler Diagramas UML de Classe (o mais usado)
+Estrutura de uma Classe no UML:
++-------------------------+
+| NomeDaClasse            |
++-------------------------+
+| - atributo: Tipo        |
+| + atributoPublico: Tipo |
++-------------------------+
+| + metodo(param): Tipo   |
+| - metodoPrivado(): void |
++-------------------------+
+
+
+Primeira parte → Nome da classe.
+
+Segunda parte → Atributos (variáveis).
+
+Terceira parte → Métodos (funções).
+
+Notação de Acesso:
+
++ → public
+
+- → private
+
+# → protected
+
+~ → default (pacote)
+
+Exemplo em Java:
+
+public class Pessoa {
+    private String nome;   // - nome: String
+    private int idade;     // - idade: int
+
+    public String getNome() { // + getNome(): String
+        return nome;
+    }
+}
+
+4. Relacionamentos em UML
+
+As classes podem se relacionar entre si. No diagrama, isso aparece como setas e linhas:
+
+Associação (→)
+
+Representa “usa” ou “tem”.
+
+Ex.: Pessoa → Endereço.
+
+Agregação (◻──)
+
+Representa “tem, mas pode existir sozinho”.
+
+Ex.: Universidade ◻── Aluno.
+
+Composição (◆──)
+
+Representa “parte de, inseparável”.
+
+Ex.: Casa ◆── Cômodo.
+
+Herança / Generalização (⇨)
+
+Representa “é um”.
+
+Ex.: Animal ⇨ Cachorro.
+
+Dependência (---→ tracejada)
+
+Representa “depende de”.
+
+Ex.: Pedido ---→ Pagamento.
+
+5. Exemplo de Diagrama de Classe UML
+Código Java:
+public abstract class Animal {
+    private String nome;
+
+    public abstract void emitirSom();
+}
+
+public class Cachorro extends Animal {
+    @Override
+    public void emitirSom() {
+        System.out.println("Au Au!");
+    }
+}
+
+public class Gato extends Animal {
+    @Override
+    public void emitirSom() {
+        System.out.println("Miau!");
+    }
+}
+
+Representação UML:
+        <<abstract>>
+        Animal
+    ------------------
+    - nome: String
+    ------------------
+    + emitirSom(): void
+           ▲
+           |
+  ----------------     ----------------
+  | Cachorro       |   | Gato          |
+  -----------------    -----------------
+  + emitirSom():void   + emitirSom():void
+
+6. Outros Diagramas Importantes
+📌 Diagrama de Casos de Uso
+
+Mostra como os usuários (atores) interagem com o sistema.
+
+Exemplo: Usuário → "Realizar Login", "Consultar Produtos".
+
+📌 Diagrama de Sequência
+
+Mostra a ordem das interações entre objetos no tempo.
+
+Exemplo: Usuário → Sistema → Banco de Dados.
+
+📌 Diagrama de Atividades
+
+Mostra o fluxo de processos (tipo um fluxograma).
+
+Exemplo: “Login → Validação → Acesso → Logout”.
+
+7. Como Criar Diagramas UML
+Passo a Passo:
+
+Identifique as classes e atores principais.
+
+Liste os atributos e métodos de cada classe.
+
+Defina os relacionamentos (associação, herança, composição, etc).
+
+Escolha a ferramenta (Astah, StarUML, Lucidchart, Draw.io, até papel e caneta).
+
+Desenhe e valide com o código.
+
+Ferramentas Recomendadas:
+
+StarUML (muito usado em cursos de sistemas).
+
+Lucidchart (online).
+
+Draw.io (diagrams.net) (gratuito e simples).
+
+Astah UML (acadêmico).
+
+8. Resumindo
+
+UML = linguagem de modelagem visual para POO.
+
+Diagrama de classes = o mais usado em Java.
+
+Relacionamentos (associação, herança, agregação, composição) são fundamentais.
+
+Existem também diagramas de uso, sequência e atividades para complementar a visão do sistema.

@@ -1,0 +1,102 @@
+📄 Polimorfismo em Java
+1. O que é Polimorfismo?
+
+Polimorfismo é outro pilar da Programação Orientada a Objetos (POO).
+A palavra vem do grego e significa “muitas formas”.
+
+Na prática, o polimorfismo permite que um mesmo método tenha diferentes comportamentos, dependendo de qual objeto o chama.
+
+Isso traz flexibilidade, reuso e extensibilidade ao código.
+
+2. Tipos de Polimorfismo em Java
+
+Polimorfismo de Sobrescrita (Override – tempo de execução):
+
+Uma subclasse fornece sua própria implementação de um método já definido na superclasse.
+
+Usa a anotação @Override.
+
+Polimorfismo de Sobrecarga (Overload – tempo de compilação):
+
+Uma classe possui métodos com o mesmo nome, mas com parâmetros diferentes.
+
+3. Exemplo de Polimorfismo por Sobrescrita (Override)
+Classe Pai:
+public class Animal {
+    public void emitirSom() {
+        System.out.println("O animal faz um som...");
+    }
+}
+
+Classes Filhas:
+public class Cachorro extends Animal {
+    @Override
+    public void emitirSom() {
+        System.out.println("O cachorro late: Au Au!");
+    }
+}
+
+public class Gato extends Animal {
+    @Override
+    public void emitirSom() {
+        System.out.println("O gato mia: Miau!");
+    }
+}
+
+Classe Principal:
+public class Main {
+    public static void main(String[] args) {
+        Animal a1 = new Cachorro(); // Animal "se comporta" como cachorro
+        Animal a2 = new Gato();     // Animal "se comporta" como gato
+
+        a1.emitirSom(); // O cachorro late: Au Au!
+        a2.emitirSom(); // O gato mia: Miau!
+    }
+}
+
+
+🔎 Aqui temos um mesmo método (emitirSom) sendo chamado de formas diferentes, dependendo do objeto real.
+
+4. Exemplo de Polimorfismo por Sobrecarga (Overload)
+public class Calculadora {
+    // Método para somar inteiros
+    public int somar(int a, int b) {
+        return a + b;
+    }
+
+    // Método para somar três inteiros
+    public int somar(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Método para somar doubles
+    public double somar(double a, double b) {
+        return a + b;
+    }
+}
+
+Classe Principal:
+public class Main {
+    public static void main(String[] args) {
+        Calculadora calc = new Calculadora();
+
+        System.out.println(calc.somar(2, 3));       // 5
+        System.out.println(calc.somar(2, 3, 4));    // 9
+        System.out.println(calc.somar(2.5, 3.7));   // 6.2
+    }
+}
+
+
+🔎 Aqui temos vários métodos com o mesmo nome (somar), mas funcionando de maneiras diferentes dependendo dos parâmetros.
+
+5. Resumindo
+
+Polimorfismo = um mesmo método pode ter comportamentos diferentes.
+
+Dois tipos principais em Java:
+
+Sobrescrita (Override): acontece na herança, em tempo de execução.
+
+Sobrecarga (Overload): acontece na mesma classe, em tempo de compilação.
+
+Traz flexibilidade, reutilização e clareza ao código.

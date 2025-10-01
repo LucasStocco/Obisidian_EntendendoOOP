@@ -1,0 +1,93 @@
+📄 Herança em Java
+1. O que é Herança?
+
+Herança é outro pilar da Programação Orientada a Objetos (POO).
+Ela permite que uma classe (subclasse ou classe filha) herde atributos e métodos de outra classe (superclasse ou classe pai).
+
+Isso promove reaproveitamento de código, organização e facilita a manutenção.
+
+2. Conceitos Principais
+
+Superclasse (Classe Pai): a classe que fornece os atributos e métodos.
+
+Subclasse (Classe Filha): a classe que herda da superclasse.
+
+Palavra-chave extends: usada para indicar herança em Java.
+
+Sobrescrita de métodos (@Override): permite que a subclasse forneça uma implementação diferente de um método da superclasse.
+
+3. Exemplo Prático
+Classe Pai (Superclasse):
+// Classe Animal
+public class Animal {
+    private String nome;
+
+    public Animal(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void emitirSom() {
+        System.out.println("O animal faz um som...");
+    }
+}
+
+Classe Filha (Subclasse):
+// Classe Cachorro herda de Animal
+public class Cachorro extends Animal {
+
+    public Cachorro(String nome) {
+        super(nome); // chama o construtor da superclasse
+    }
+
+    // Sobrescrevendo o método emitirSom
+    @Override
+    public void emitirSom() {
+        System.out.println(getNome() + " está latindo: Au Au!");
+    }
+}
+
+// Classe Gato herda de Animal
+public class Gato extends Animal {
+
+    public Gato(String nome) {
+        super(nome);
+    }
+
+    @Override
+    public void emitirSom() {
+        System.out.println(getNome() + " está miando: Miau!");
+    }
+}
+
+Classe Principal (Testando a Herança):
+public class Main {
+    public static void main(String[] args) {
+        // Criando objetos das subclasses
+        Cachorro dog = new Cachorro("Rex");
+        Gato cat = new Gato("Mimi");
+
+        // Chamando métodos herdados e sobrescritos
+        dog.emitirSom(); // Rex está latindo: Au Au!
+        cat.emitirSom(); // Mimi está miando: Miau!
+
+        // Métodos herdados da classe Animal
+        System.out.println("Nome do cachorro: " + dog.getNome());
+        System.out.println("Nome do gato: " + cat.getNome());
+    }
+}
+
+4. Resumindo
+
+Herança = reuso de código entre classes.
+
+A subclasse herda atributos e métodos da superclasse.
+
+Usa-se a palavra-chave extends.
+
+Métodos podem ser sobrescritos com @Override.
+
+Permite criar uma hierarquia de classes (exemplo: Animal → Mamífero → Cachorro).

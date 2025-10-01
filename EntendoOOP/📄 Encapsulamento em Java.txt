@@ -1,0 +1,96 @@
+📄 Encapsulamento em Java
+1. O que é Encapsulamento?
+
+Encapsulamento é um dos pilares da Programação Orientada a Objetos (POO). Ele consiste em esconder os detalhes internos de uma classe e controlar o acesso aos atributos e métodos por meio de modificadores de acesso.
+
+A ideia principal é proteger os dados de acessos indevidos, garantindo que eles só possam ser manipulados de forma segura e controlada.
+
+Benefícios:
+
+Maior segurança dos dados.
+
+Controle sobre como os atributos são modificados.
+
+Facilidade de manutenção do código.
+
+Possibilidade de aplicar regras de negócio no acesso ou alteração de dados.
+
+2. Modificadores de Acesso
+
+Em Java, o encapsulamento é implementado principalmente com os modificadores de acesso:
+
+public → acessível de qualquer lugar.
+
+private → acessível apenas dentro da própria classe.
+
+protected → acessível dentro do mesmo pacote ou por subclasses.
+
+(padrão) (sem modificador) → acessível apenas dentro do mesmo pacote.
+
+3. Como Implementar Encapsulamento em Java
+Exemplo Prático:
+// Classe Pessoa
+public class Pessoa {
+    // Atributos privados (não podem ser acessados diretamente de fora da classe)
+    private String nome;
+    private int idade;
+
+    // Construtor
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        setIdade(idade); // usando o setter para validar
+    }
+
+    // Getter para nome
+    public String getNome() {
+        return nome;
+    }
+
+    // Setter para nome
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    // Getter para idade
+    public int getIdade() {
+        return idade;
+    }
+
+    // Setter para idade com regra de negócio (validação)
+    public void setIdade(int idade) {
+        if (idade >= 0) {
+            this.idade = idade;
+        } else {
+            System.out.println("Idade inválida! Atribuindo valor padrão (0).");
+            this.idade = 0;
+        }
+    }
+}
+
+Classe Principal para Testar:
+public class Main {
+    public static void main(String[] args) {
+        Pessoa p1 = new Pessoa("Lucas", 20);
+
+        // Acessando atributos de forma segura
+        System.out.println("Nome: " + p1.getNome());
+        System.out.println("Idade: " + p1.getIdade());
+
+        // Alterando valores com validação
+        p1.setIdade(-5); // não será permitido
+        System.out.println("Idade atualizada: " + p1.getIdade());
+
+        p1.setNome("Maria");
+        System.out.println("Nome atualizado: " + p1.getNome());
+    }
+}
+
+4. Resumindo:
+
+Encapsulamento = proteção + controle de acesso.
+
+Atributos → geralmente declarados como private.
+
+Acesso → feito por meio de getters e setters (métodos públicos).
+
+Permite aplicar validações e regras no momento de acessar ou alterar os dados.

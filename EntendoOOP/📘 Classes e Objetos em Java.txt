@@ -1,0 +1,91 @@
+📘 Classes e Objetos em Java
+🔹 1. O que é uma Classe?
+
+Uma classe é como um molde ou modelo que descreve as características e comportamentos de algo no mundo real.
+
+Características → representadas por atributos (variáveis da classe).
+
+Comportamentos → representados por métodos (funções dentro da classe).
+
+👉 Pense em uma classe como a planta de uma casa: ela não é a casa em si, mas contém todas as instruções para construí-la.
+
+Estrutura básica de uma classe em Java:
+public class Pessoa {
+    // Atributos
+    String nome;
+    int idade;
+
+    // Método
+    public void apresentar() {
+        System.out.println("Olá, meu nome é " + nome + " e tenho " + idade + " anos.");
+    }
+}
+
+🔹 2. O que é um Objeto?
+
+Um objeto é uma instância de uma classe.
+Ou seja, quando você cria um objeto, está construindo algo real a partir do molde da classe.
+
+👉 Seguindo o exemplo: se a classe é a planta da casa, o objeto é a casa construída.
+
+Criando um objeto em Java:
+public class Main {
+    public static void main(String[] args) {
+        // Criando objetos a partir da classe Pessoa
+        Pessoa p1 = new Pessoa();
+        Pessoa p2 = new Pessoa();
+
+        // Definindo valores para os atributos
+        p1.nome = "Lucas";
+        p1.idade = 20;
+
+        p2.nome = "Ana";
+        p2.idade = 25;
+
+        // Chamando métodos dos objetos
+        p1.apresentar();
+        p2.apresentar();
+    }
+}
+
+Saída:
+Olá, meu nome é Lucas e tenho 20 anos.
+Olá, meu nome é Ana e tenho 25 anos.
+
+🔹 3. Diferença entre Classe e Objeto
+Classe	Objeto
+É um molde/modelo	É uma instância concreta
+Define atributos e métodos	Tem valores próprios para atributos
+Não ocupa memória diretamente	Ocupa memória quando criado com new
+Exemplo: Pessoa	Exemplo: Pessoa p1 = new Pessoa();
+🔹 4. Vários Objetos de uma Mesma Classe
+
+Uma classe pode gerar vários objetos diferentes, cada um com seus próprios valores.
+
+Pessoa p1 = new Pessoa();
+Pessoa p2 = new Pessoa();
+Pessoa p3 = new Pessoa();
+
+
+Mesmo que todos venham do mesmo molde, cada objeto é independente dos outros.
+
+🔹 5. Relacionando com POO
+
+As classes e objetos são a base da Programação Orientada a Objetos.
+A partir deles, entram os outros pilares:
+
+Encapsulamento → proteger os atributos.
+
+Herança → reaproveitar classes.
+
+Polimorfismo → mesmo método, diferentes comportamentos.
+
+Abstração → focar no que é essencial.
+
+✅ Resumo Final:
+
+Classe = modelo que define atributos e métodos.
+
+Objeto = instância real de uma classe.
+
+Em Java, usamos new para criar objetos.
